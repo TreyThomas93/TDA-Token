@@ -38,9 +38,9 @@
 
 - There are two types of users you can select from:
 
-    1. Existing User - User already has a collection in Mongo. If the user inputs an existing account id, then the account specified will be the one updated. If account id is new, then it will be added.
+  1. Existing User - User already has a collection in Mongo. If the user inputs an existing account id, then the account specified will be the one updated. If account id is new, then it will be added.
 
-    2. New User - User does not exist in collection in Mongo. User info will be inserted into the users collection along with new tokens.
+  2. New User - User does not exist in collection in Mongo. User info will be inserted into the users collection along with new tokens.
 
 #### Decision Screen
 
@@ -80,7 +80,7 @@
 
 - **Client ID** - This is the client id created when you create an app in the TDA Developers site here: https://developer.tdameritrade.com/apis. This is different than your TDAmeritrade account, and you will have to register. Once registered, login and you will see a tab that says My Apps. Click the tab, and click on the tab that says Add A New App. Once clicked, a page will load and will ask you for an App Name, Callback URL, and What is the purpose of this application. Name it whatever you want, the Callback url needs to be http://localhost:8080, and describe a purpose for the app. Then click the Create App button. Once you do that, go to where you can view all of your apps. Click on the app you just created, and click on the Keys tab. Look for the Consumer Key. That is your **Client ID**.
 
-- **Account Type** - Can be PRIMARY or SECONDARY. Technically, you can set this to more than just these two options. This seperates the accounts and each trade in the program. Basically, when you set the scanner names in Thinkorswim, you will append this value to the end of the scanner name, telling the program that the specific strategy is for either the PRIMARY or SECONDARY account. 
+- **Account Type** - Can be PRIMARY or SECONDARY. Technically, you can set this to more than just these two options. This seperates the accounts and each trade in the program. Basically, when you set the scanner names in Thinkorswim, you will append this value to the end of the scanner name, telling the program that the specific strategy is for either the PRIMARY or SECONDARY account.
 
 - **Asset Type** - Either EQUITY or OPTION for the specific account. This tells the program what this account should be trading.
 
