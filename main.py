@@ -20,7 +20,7 @@ class GUI(TDAuth):
         # SET MAIN WINDOW POSITION TO CENTER OF SCREEN
         app_width = 700
 
-        app_height = 400
+        app_height = 500
 
         screen_width = self.window.winfo_screenwidth()
 
