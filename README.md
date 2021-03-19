@@ -32,6 +32,10 @@
 
 - The purpose of this program is to obtain access and refresh tokens from TDAmeritrade for a specific account, and store that information in your MongoDB database.
 
+- This program uses Tkinter to generate a GUI to make it easier to insert user info.
+
+- You are going to need to connect to the MongoDB Live_Trader database that you created in your cluster. You will need to store your URI in a .env file stored in the root folder of the program. If you are unsure on how to setup a cluster with a database, Youtube, StackOverflow, and the Mongo docs will help you. It's quite easy. And if you need to, you can always contact me and I will be more than happy to help.
+
 - There are two types of users you can select from:
 
     1. Existing User - User already has a collection in Mongo. If the user inputs an existing account id, then the account specified will be the one updated. If account id is new, then it will be added.
