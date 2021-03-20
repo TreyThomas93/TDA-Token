@@ -108,7 +108,7 @@
 
 - The rest of the program will continue to run, and the required info from the authentication process that we just finished will be used to obtain your access and refresh tokens.
 
-![Final Screen](img/final_screen.PNG)
+![Final Screen](img/final_screen.png)
 
 - Your all set. Your user info and tokens will be added/updated in the users collection in Mongo. Now you will be able to run your account in the program!
 
