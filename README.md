@@ -110,6 +110,6 @@
 
 ![Final Screen](img/final_screen.png)
 
-- Your all set. Your user info and tokens will be added/updated in the users collection in Mongo. Now you will be able to run your account in the program!
+- Your all set. Your user info and tokens will be added/updated in the users collection in Mongo. Now you will be able to run your account in the trading bot program!
 
 - For more info on the TDA authentication process, see this link: https://developer.tdameritrade.com/content/authentication-faq
