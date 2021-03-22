@@ -157,7 +157,7 @@ class TDAuth:
                 "Active": False,
                 "ClientID": self.client_id,
                 "Accounts": {
-                    str(self.account_id:) tokens
+                    str(self.account_id): tokens
                 }
             })
 
