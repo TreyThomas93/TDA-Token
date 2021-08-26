@@ -84,7 +84,7 @@ class GUI(TDAuth):
                 try:
 
                     self.device_id = int(data["Device_ID"])
-
+                    
                 except:
 
                     self.error_label = Label(
@@ -98,10 +98,6 @@ class GUI(TDAuth):
                 frame.destroy()
 
                 self.client_id = data["Client_ID"]
-
-                self.asset_type = data["Asset_Type"]
-
-                self.account_type = data["Account_Type"]
 
                 self.text = Text(
                     self.window, bg=self.bg, fg=self.font_color, wrap="word", borderwidth=0, highlightthickness=0, spacing1=3)
@@ -294,42 +290,6 @@ class GUI(TDAuth):
 
         client_id_entry.grid(column=1, row=6)
 
-        # ACCOUNT TYPE ENTRY
-        account_type_label = Label(
-            frame, text="Select Account Type:", bg=self.bg, fg=self.font_color)
-
-        account_type_label.grid(column=0, row=7, sticky="w", padx=10, pady=10)
-
-        account_type = StringVar()
-
-        account_type.set("PRIMARY")
-
-        options = ["PRIMARY", "SECONDARY"]
-
-        account_type_select = OptionMenu(frame, account_type, *options)
-
-        account_type_select.config(bg=self.font_color, width=15, borderwidth=0, highlightthickness=0, anchor="w")
-
-        account_type_select.grid(column=1, row=7)
-
-        # ASSET TYPE ENTRY
-        asset_type_label = Label(
-            frame, text="Select Asset Type:", bg=self.bg, fg=self.font_color)
-
-        asset_type_label.grid(column=0, row=8, sticky="w", padx=10, pady=10)
-
-        asset_type = StringVar()
-
-        asset_type.set("EQUITY")
-
-        options = ["EQUITY", "OPTION"]
-
-        asset_type_select = OptionMenu(frame, asset_type, *options)
-
-        asset_type_select.config(bg=self.font_color, width=15, borderwidth=0, highlightthickness=0, anchor="w")
-
-        asset_type_select.grid(column=1, row=8)
-
         def saveInfo():
 
             data = {
@@ -339,8 +299,6 @@ class GUI(TDAuth):
                 "Account_ID": account_id_entry.get().strip(),
                 "Client_ID": client_id_entry.get().strip(),
                 "Device_ID": device_id_entry.get().strip(),
-                "Account_Type": account_type.get().strip(),
-                "Asset_Type": asset_type.get().strip()
             }
 
             self.saveInfo(frame=frame, data=data, user_type="New")

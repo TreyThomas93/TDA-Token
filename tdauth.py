@@ -132,33 +132,24 @@ class TDAuth:
             tokens["refresh_exp_date"] = (datetime.now().replace(
                 microsecond=0) + timedelta(days=90)).strftime("%Y-%m-%d")
 
-            tokens["AccountID"] = self.account_id
-
             tokens["Account_Balance"] = 0
-
-            tokens["Available_For_Trading"] = 0
-
-            tokens["Asset_Type"] = self.asset_type
-
-            tokens["Price_Range"] = {"Min": 8, "Max": 30}
 
             tokens["Strategies"] = {}
 
-            tokens["Account_Type"] = self.account_type
+            tokens["Active"] = True
 
-            tokens["Limit_Offset"] = 0.005
-
-            tokens["Trailing_Stop_Active"] = False
+            tokens["forbidden_symbols"] = []
 
             # SAVE NEW USER AND TOKENS TO DATABASE
             self.users.insert({
                 "Name": self.name,
                 "deviceID": self.device_id,
-                "Active": False,
                 "ClientID": self.client_id,
                 "Accounts": {
                     str(self.account_id): tokens
-                }
+                },
+                "Username": "",
+                "Password": ""
             })
 
             self.displayText(
