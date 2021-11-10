@@ -134,11 +134,7 @@ class TDAuth:
 
             tokens["Account_Balance"] = 0
 
-            tokens["Strategies"] = {}
-
             tokens["Active"] = True
-
-            tokens["forbidden_symbols"] = []
 
             # SAVE NEW USER AND TOKENS TO DATABASE
             self.users.insert({
