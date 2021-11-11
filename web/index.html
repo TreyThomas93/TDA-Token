@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/index.css" />
+    <title>TDA Token</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h5>TDA Token</h5>
+      </header>
+
+      <div class="container">
+        <div id="button-container">
+          <!-- ADD USER BUTTON -->
+          <button id="add-user-btn">Add User</button>
+          <!-- ADD USER BUTTON -->
+          <button id="add-update-account-btn">Add/Update Account</button>
+        </div>
+
+        <!-- DISPLAY ALL ACCOUNTS -->
+        <div id="accounts-container"></div>
+      </div>
+    </main>
+
+    <!-- ADD USER POPUP -->
+    <div id="add-user-popup" class="popup">
+      <div class="popup-container">
+        <div>
+          <h5>Add User</h5>
+          <button id="exit-add-user-popup">Exit</button>
+        </div>
+        <p>For adding a first time user with an account.</p>
+        <form>
+          <input type="text" placeholder="Enter Name" />
+          <input type="text" placeholder="Enter Username For TDA Account" />
+          <input type="password" placeholder="Enter Password For TDA Account" />
+          <input
+            type="password"
+            placeholder="Confirm Password For TDA Account"
+          />
+          <input type="text" placeholder="Enter Account ID For TDA Account" />
+          <input type="text" placeholder="Enter Device ID For Pushsafer" />
+          <input type="text" placeholder="Enter Client ID From TDA Developer" />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+
+    <!-- ADD/UPDATE ACCOUNT POPUP -->
+    <div id="add-update-account-popup" class="popup">
+      <div class="popup-container">
+        <div>
+          <h5>Add/Update Account</h5>
+          <button class="exit-popup" id="exit-add-update-account-popup">
+            Exit
+          </button>
+        </div>
+        <p>
+          For adding an account to an existing user or updating an account for
+          an existing user.
+        </p>
+        <form>
+          <input type="text" placeholder="Enter Name" />
+          <input type="text" placeholder="Enter Username For TDA Account" />
+          <input type="password" placeholder="Enter Password For TDA Account" />
+          <input
+            type="password"
+            placeholder="Confirm Password For TDA Account"
+          />
+          <input type="text" placeholder="Enter Account ID For TDA Account" />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+
+    <!-- <script type="text/javascript" src="/eel.js"></script> -->
+    <script src="js/index.js"></script>
+  </body>
+</html>

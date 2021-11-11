@@ -8,14 +8,13 @@ autopep8 = "*"
 
 [packages]
 selenium = "*"
-termcolor = "*"
-colorama = "*"
 pymongo = "*"
 dnspython = "*"
 python-dotenv = "*"
 requests = "*"
 webdriver-manager = "*"
-bcrypt = "*"
+eel = "*"
+certifi = "*"
 
 [requires]
 python_version = "3.8"

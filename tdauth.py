@@ -36,20 +36,6 @@ class TDAuth:
 
         self.redirect_uri = "http://localhost:8080"
 
-    def connectMongo(self):
-
-        if os.getenv("MONGO_URI") != None:
-
-            self.client = MongoClient(os.getenv("MONGO_URI"))
-
-            self.db = self.client["Live_Trader"]
-
-            self.users = self.db["users"]
-
-        else:
-
-            raise Exception("FAILED TO CONNECT TO MONGO!")
-
     def getTokens(self, user_type):
 
         self.displayText("Starting Browser....\n")
