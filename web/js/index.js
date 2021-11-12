@@ -118,7 +118,7 @@ function fetchAccounts(accounts) {
     let expired = false;
 
     // IF CURRENT DATE IS PAST REFRESH EXP
-    if (refresh_exp > current_date) {
+    if (refresh_exp < current_date) {
       expired = true;
     } else expired = false;
 
