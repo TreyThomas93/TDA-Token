@@ -47,6 +47,8 @@ def fetchFormData(form_data):
 
         token_data["created_at"] = time.time()
 
+        token_data["Account_Position"] = "Paper"
+
         action = None
 
         # IF EXISTING USER, THEN ADD ACCOUNT OR UPDATE ACCOUNT

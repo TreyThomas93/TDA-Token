@@ -21,7 +21,7 @@ class MongoDB:
                 self.client = MongoClient(
                     MONGO_URI, authSource="admin", tlsCAFile=ca)
 
-                self.db = self.client["Live_Trader"]
+                self.db = self.client["Api_Trader"]
 
                 self.users = self.db["users"]
 
