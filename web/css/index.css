@@ -57,6 +57,62 @@ button:hover {
   margin: 1em 1em 0 0;
 }
 
+/* ACCOUNTS CONTAINER */
+
+#accounts-container {
+  padding: 2em;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1em;
+}
+
+.card {
+  background: var(--primary);
+  padding: 1em;
+  color: var(--bg);
+  max-width: 400px;
+  word-wrap: break-word;
+  border-radius: 5px;
+  border: ridge 2px var(--dark-green);
+  transition: 0.2s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.inner-div {
+  margin-top: 1em;
+  display: grid;
+}
+
+.card label {
+  font-size: 0.8rem;
+}
+
+.expired {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(1, 1, 1, 0.25);
+}
+
+.expired h1 {
+  transform: rotate(-25deg);
+  margin: auto;
+  color: red;
+}
+
+.not-expired {
+  display: none;
+}
+
 /* POPUP */
 #add-user-popup {
   display: none;

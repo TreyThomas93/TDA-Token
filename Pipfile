@@ -15,6 +15,7 @@ requests = "*"
 webdriver-manager = "*"
 eel = "*"
 certifi = "*"
+bcrypt = "*"
 
 [requires]
 python_version = "3.8"

@@ -3,90 +3,75 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 import time
 import requests
+import traceback
 
 
 class TDAmeritrade:
 
-    def __init__(self):
+    def fetchTokenData(self, form_data):
 
-        self.name = None
+        try:
 
-        self.username = None
+            driver = webdriver.Chrome(ChromeDriverManager().install())
 
-        self.password = None
+            client_id = form_data["Client_ID"] + '@AMER.OAUTHAP'
 
-        self.account_id = None
+            url = 'https://auth.tdameritrade.com/auth?response_type=code&redirect_uri=' + \
+                up.quote("http://localhost:8080") + \
+                '&client_id=' + up.quote(client_id)
 
-        self.client_id = None
+            driver.get(url)
 
-        self.device_id = None
+            driver.implicitly_wait(5)
 
-        self.asset_type = None
+            ubox = driver.find_element_by_id('username0')
 
-        self.account_type = None
+            pbox = driver.find_element_by_id('password1')
 
-        self.redirect_uri = "http://localhost:8080"
+            ubox.send_keys(form_data["Username"])
 
-    def fetchTokens(self):
+            pbox.send_keys(form_data["Password"])
 
-        driver = webdriver.Chrome(ChromeDriverManager().install())
+            driver.find_element_by_id('accept').click()
 
-        client_id = self.client_id + '@AMER.OAUTHAP'
+            driver.find_element_by_id('accept').click()
 
-        url = 'https://auth.tdameritrade.com/auth?response_type=code&redirect_uri=' + \
-            up.quote(self.redirect_uri) + \
-            '&client_id=' + up.quote(client_id)
+            while True:
 
-        driver.get(url)
+                try:
 
-        driver.implicitly_wait(5)
+                    code = up.unquote(driver.current_url.split('code=')[1])
 
-        ubox = driver.find_element_by_id('username0')
+                    if code != '':
 
-        pbox = driver.find_element_by_id('password1')
+                        break
 
-        ubox.send_keys(self.username)
+                    else:
 
-        pbox.send_keys(self.password)
+                        time.sleep(2)
 
-        driver.find_element_by_id('accept').click()
+                except:
 
-        driver.find_element_by_id('accept').click()
+                    pass
 
-        while True:
+            driver.close()
 
-            try:
+            resp = requests.post('https://api.tdameritrade.com/v1/oauth2/token',
+                                 headers={
+                                     'Content-Type': 'application/x-www-form-urlencoded'},
+                                 data={'grant_type': 'authorization_code',
+                                       'refresh_token': '',
+                                       'access_type': 'offline',
+                                       'code': code,
+                                       'client_id': form_data["Client_ID"],
+                                       'redirect_uri': "http://localhost:8080"})
 
-                code = up.unquote(driver.current_url.split('code=')[1])
+            if resp.status_code != 200:
 
-                if code != '':
+                return {"error": "unable to authenticate"}
 
-                    break
+            return resp.json()
 
-                else:
-
-                    time.sleep(2)
-
-            except:
-
-                pass
-
-        driver.close()
-
-        resp = requests.post('https://api.tdameritrade.com/v1/oauth2/token',
-                             headers={
-                                 'Content-Type': 'application/x-www-form-urlencoded'},
-                             data={'grant_type': 'authorization_code',
-                                   'refresh_token': '',
-                                   'access_type': 'offline',
-                                   'code': code,
-                                   'client_id': self.client_id,
-                                   'redirect_uri': self.redirect_uri})
-
-        if resp.status_code != 200:
-
-            raise Exception('COULD NOT AUTHENTICATE!')
-
-        tokens = resp.json()
-
-        
+        except Exception:
+            
+            return {"error": traceback.format_exc()}

@@ -1,58 +1,48 @@
 # TDA Tokens Generator
 
-### DESCRIPTION
+### **DESCRIPTION**
 
-- This program allows you to obtain access and refresh tokens via OAuth through the TDAmeritrade API.
+- This program allows you to obtain access and refresh tokens via OAuth through the TDAmeritrade API. This uses the Eel library for the GUI.
 
-### DEPENDENCIES
+### **DEPENDENCIES**
+
+---
 
 > [dev-packages]
 
+- autopep8 = "\*"
+
 > [packages]
 
-- selenium
-- termcolor
-- colorama
-- pymongo
-- dnspython
-- python-dotenv
-- requests
-- webdriver-manager
-- bcrypt
-
-> [venv]
-
-- pipenv
+- selenium = "\_"
+- pymongo = "\_"
+- dnspython = "\_"
+- python-dotenv = "\_"
+- requests = "\_"
+- webdriver-manager = "\_"
+- eel = "\_"
+- certifi = "\_"
+- bcrypt = "\*"
 
 > [requires]
 
 - python_version = "3.8"
 
-### HOW IT WORKS
+### **HOW IT WORKS**
+
+---
 
 - The purpose of this program is to obtain access and refresh tokens from TDAmeritrade for a specific account, and store that information in your MongoDB database.
 
-- This program uses Tkinter to generate a GUI to make it easier to insert user info.
+- This program uses the Eel library to generate a GUI to make it easier to insert user info.
 
-- You are going to need to connect to the MongoDB Live_Trader database that you created in your cluster. You will need to store your URI in a .env file stored in the root folder of the program. If you are unsure on how to setup a cluster with a database, Youtube, StackOverflow, and the Mongo docs will help you. It's quite easy. And if you need to, you can always contact me and I will be more than happy to help.
+- You are going to need to connect to the MongoDB Live_Trader database that you created in your cluster. You will need to store your URI in a config.env file stored in the root folder of the program.
 
-- There are two types of users you can select from:
+- When you start the program, you will see a page with two buttons at the top right. If you currently have any accounts already created, they will populate on the page as well.
 
-  1. Existing User - User already has a collection in Mongo. If the user inputs an existing account id, then the account specified will be the one updated. If account id is new, then it will be added.
+#### **Add/Update Account**
 
-  2. New User - User does not exist in collection in Mongo. User info will be inserted into the users collection along with new tokens.
-
-#### Decision Screen
-
-- When you start the program, you will be introduced with two buttons. One that says Existing User, and the other says New User. Choose the appropriate button.
-
-![Decision Screen](img/decision_screen.PNG)
-
-#### Existing User Screen
-
-- If you selected Existing User, you will be directed to a screen that looks like the image below:
-
-![Existing User Screen](img/existing_user_screen.PNG)
+- If you clicked the Add/Update Account button, you will see a popup with the following fields below:
 
 - **Name** - This is the users name (First and Last)
 
@@ -62,11 +52,9 @@
 
 - **Account ID** - This is the account id for the TDAmeritrade account you are using.
 
-#### New User Screen
+#### **Add User**
 
-- If you selected New User, you will be directed to a screen that looks like the image below:
-
-![Existing User Screen](img/new_user_screen.PNG)
+- If you clicked Add User button, you will see a popup with the following fields below:
 
 - **Name** - This is the users name (First and Last)
 
@@ -78,34 +66,13 @@
 
 - **Device ID** - This is the device id for the Pushsafer API. This id is what allows you to push notifications from the program to your phone or any other device. https://www.pushsafer.com/
 
-- **Client ID** - This is the client id created when you create an app in the TDA Developers site here: https://developer.tdameritrade.com/apis. This is different than your TDAmeritrade account, and you will have to register. Once registered, login and you will see a tab that says My Apps. Click the tab, and click on the tab that says Add A New App. Once clicked, a page will load and will ask you for an App Name, Callback URL, and What is the purpose of this application. Name it whatever you want, the Callback url needs to be http://localhost:8080, and describe a purpose for the app. Then click the Create App button. Once you do that, go to where you can view all of your apps. Click on the app you just created, and click on the Keys tab. Look for the Consumer Key. That is your **Client ID**.
+- **Client ID** - This is the client id created when you create an app in the TDA Developers site here: https://developer.tdameritrade.com/apis. This is different than your TDAmeritrade account, and you will have to register (Registration is free). Once registered, login and you will see a tab that says My Apps. Click the tab, and click on the tab that says Add A New App. Once clicked, a page will load and will ask you for an App Name, Callback URL, and "What is the purpose of this application". Name it whatever you want, the Callback url needs to be http://localhost:8080, and describe a purpose for the app. Then click the Create App button. Once you do that, go to where you can view all of your apps. Click on the app you just created, and click on the Keys tab. Look for the Consumer Key. That is your **Client ID**.
 
-#### After Submission
+#### **After Submission**
 
-- After you submit the form for either Existing User or New User, you will be redirected to the page below:
-
-![Starting Browser and Redirecting Screen](img/starting_browser_and_redirecting.png)
-
-- The web browser will auto initiate and redirect to the oauth authentication url.
-
-- You should see a new browser pop up. Do not exit. A page with a login form will display. The program will automatically insert the username and password for your account that you previously inputted, and then auto log you in. If successful, you will be redirected to the page below:
-
-![Get Code Screen](img/get_code_screen.PNG)
-
-- We will need to get a code to verify our account. Either select a phone number you want the code to be sent to, or you can click the link below that says Can't get the text message? and you will be allowed to answer a security question. If successful, you will be redirected to the page below:
-
-![Enter Code Screen](img/enter_code_screen.PNG)
-
-- Once received to your phone, enter security code and then click continue. If you answered security question, then you will have skipped this part. If successful, you will be redirected to the page below:
-
-![Allow Screen](img/allow_screen.PNG)
-
-- Click the Allow button, and the browser will close.
-
-- The rest of the program will continue to run, and the required info from the authentication process that we just finished will be used to obtain your access and refresh tokens.
-
-![Final Screen](img/final_screen.png)
-
-- Your all set. Your user info and tokens will be added/updated in the users collection in Mongo. Now you will be able to run your account in the trading bot program!
-
+- After you submit the form, another browser will display and auto input your username and password and then login. If successful, you will be redirected to another page.
+- Continue following the directions on the pages. It will ask you to input a code that gets sent to your phone. You can also answer a security question.
+- Once you do all that and are successful, you will be redirected to a page that asks you to allow trading, Click the allow button.
+- Your tokens will be generated and automatically inserted in your MongoDB Live_Trader database.
+- Also, your TDA username and password (which is encrypted using bcrypt) will be inserted into your user object in Mongo as well. This can be used for credentials if you decide to use the web app.
 - For more info on the TDA authentication process, see this link: https://developer.tdameritrade.com/content/authentication-faq

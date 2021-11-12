@@ -35,17 +35,38 @@
         </div>
         <p>For adding a first time user with an account.</p>
         <form>
-          <input type="text" placeholder="Enter Name" />
-          <input type="text" placeholder="Enter Username For TDA Account" />
-          <input type="password" placeholder="Enter Password For TDA Account" />
+          <input type="text" name="Name" placeholder="Enter Name" />
+          <input
+            type="text"
+            name="Username"
+            placeholder="Enter Username For TDA Account"
+          />
           <input
             type="password"
+            name="Password"
+            placeholder="Enter Password For TDA Account"
+          />
+          <input
+            type="password"
+            name="Confirm_Password"
             placeholder="Confirm Password For TDA Account"
           />
-          <input type="text" placeholder="Enter Account ID For TDA Account" />
-          <input type="text" placeholder="Enter Device ID For Pushsafer" />
-          <input type="text" placeholder="Enter Client ID From TDA Developer" />
-          <input type="submit" value="Submit" />
+          <input
+            type="text"
+            name="Account_ID"
+            placeholder="Enter Account ID For TDA Account"
+          />
+          <input
+            type="text"
+            name="Device_ID"
+            placeholder="Enter Device ID For Pushsafer"
+          />
+          <input
+            type="text"
+            name="Client_ID"
+            placeholder="Enter Client ID From TDA Developer"
+          />
+          <input type="submit" value="Submit" id="add-user-save-btn" />
         </form>
       </div>
     </div>
@@ -64,20 +85,37 @@
           an existing user.
         </p>
         <form>
-          <input type="text" placeholder="Enter Name" />
-          <input type="text" placeholder="Enter Username For TDA Account" />
-          <input type="password" placeholder="Enter Password For TDA Account" />
+          <input type="text" name="Name" placeholder="Enter Name" />
+          <input
+            type="text"
+            name="Username"
+            placeholder="Enter Username For TDA Account"
+          />
           <input
             type="password"
+            name="Password"
+            placeholder="Enter Password For TDA Account"
+          />
+          <input
+            type="password"
+            name="Confirm_Password"
             placeholder="Confirm Password For TDA Account"
           />
-          <input type="text" placeholder="Enter Account ID For TDA Account" />
-          <input type="submit" value="Submit" />
+          <input
+            type="text"
+            name="Account_ID"
+            placeholder="Enter Account ID For TDA Account"
+          />
+          <input
+            type="submit"
+            value="Submit"
+            id="add-update-account-save-btn"
+          />
         </form>
       </div>
     </div>
 
-    <!-- <script type="text/javascript" src="/eel.js"></script> -->
-    <script src="js/index.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
   </body>
 </html>
