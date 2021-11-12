@@ -45,6 +45,8 @@ def fetchFormData(form_data):
         token_data["refresh_exp_date"] = (datetime.now().replace(
             microsecond=0) + timedelta(days=90)).strftime("%Y-%m-%d")
 
+        token_data["created_at"] = time.time()
+
         action = None
 
         # IF EXISTING USER, THEN ADD ACCOUNT OR UPDATE ACCOUNT
