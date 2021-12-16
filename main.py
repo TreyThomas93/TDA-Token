@@ -91,8 +91,8 @@ def fetchFormData(form_data):
 def callAccounts():
     # FETCH ALL ACCOUNTS AND SEND TO JS TO BE DISPLAYED
     accounts = [user["Accounts"] for user in mongo.users.find()]
-
-    eel.fetchAccounts(accounts[0])
+    
+    eel.fetchAccounts(accounts)
 
 
 if __name__ == '__main__':
