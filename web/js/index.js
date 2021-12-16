@@ -105,30 +105,30 @@ function fetchAccounts(accounts) {
   let accounts_container = document.querySelector("#accounts-container");
 
   elements = "";
+  accounts.forEach((account) => {
+    for (const key of Object.keys(account)) {
+      let status = account[key]["Active"] === true ? "Active" : "Inactive";
 
-  for (const key of Object.keys(accounts)) {
-    let status = accounts[key]["Active"] === true ? "Active" : "Inactive";
+      let refresh_exp = new Date(
+        account[key]["refresh_exp_date"]
+      ).toDateString();
 
-    let refresh_exp = new Date(
-      accounts[key]["refresh_exp_date"]
-    ).toDateString();
+      let current_date = new Date().toDateString();
 
-    let current_date = new Date().toDateString();
+      let expired = false;
 
-    let expired = false;
+      // IF CURRENT DATE IS PAST REFRESH EXP
+      if (refresh_exp < current_date) {
+        expired = true;
+      } else expired = false;
 
-    // IF CURRENT DATE IS PAST REFRESH EXP
-    if (refresh_exp < current_date) {
-      expired = true;
-    } else expired = false;
-
-    elements += `
+      elements += `
       <div class="card">
         <h5>Account ID: ${key}</h5>
 
         <div class="inner-div">
           <label>Refresh Token Expiration: ${
-            accounts[key]["refresh_exp_date"]
+            account[key]["refresh_exp_date"]
           }</label>
           <label>Account Status: ${status}</label>
         </div>
@@ -138,7 +138,7 @@ function fetchAccounts(accounts) {
         </div>
       </div>
     `;
-  }
-
+    }
+  });
   accounts_container.innerHTML = elements;
 }
